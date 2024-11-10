@@ -7,8 +7,16 @@ export const GET_USER_ERRORS = "GET_USER_ERRORS"
 export const UPDATE_PASSWORD = "UPDATE_PASSWORD"
 export const DELETE_USER = "DELETE_USER"
 
-export const getUser = (uid) => {
-    return (dispatch) => {
+type userProps ={
+    userId: string,
+    name: string,
+    email: string,
+    adress: string,
+    password: string
+}
+
+export const getUser = (uid: string) => {
+    return (dispatch: any) => {
         return axios 
             .get(`${process.env.REACT_APP_API_URL}api/user/${uid}`)
             .then((res) => {
@@ -18,8 +26,8 @@ export const getUser = (uid) => {
     }
 }
 
-export const updateUser = (userId, name, adress, email) => {
-    return (dispatch) => {
+export const updateUser = ({userId, name, adress, email} : userProps) => {
+    return (dispatch: any) => {
         return axios({
             method:"put",
             url:`${process.env.REACT_APP_API_URL}api/user` + userId,
@@ -31,8 +39,8 @@ export const updateUser = (userId, name, adress, email) => {
     }
 }
 
-export const uploadPicture = (data, id) => {
-    return (dispatch) => {
+export const uploadPicture = (data: any, id: string) => {
+    return (dispatch: any) => {
         return axios 
             .post(`${process.env.REACT_APP_API_URL}api/user/upload-userPic`, data)
             .then((res)=> {
@@ -51,8 +59,8 @@ export const uploadPicture = (data, id) => {
     }
 }
 
-export const updatePassword = (userId, password) => {
-    return (dispatch) => {
+export const updatePassword = (userId: string, password: string) => {
+    return (dispatch: any) => {
         return axios({
             method:"put",
             url: `${process.env.REACT_APP_API_URL}api/user` + userId,
@@ -65,8 +73,8 @@ export const updatePassword = (userId, password) => {
     }
 }
 
-export const deleteUser = (userId, name, email, adress, password) => {
-    return (dispatch) => {
+export const deleteUser = ({userId, name, email, adress, password} : userProps) => {
+    return (dispatch: any) => {
         return axios({
             method:"delete",
             url: `${process.env.REACT_APP_API_URL}api/user/${userId}`,
