@@ -6,8 +6,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    "moduleResolution": "Node16",
-    "allowImportingTsExtensions": true,
+    "moduleResolution": "Node",
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
