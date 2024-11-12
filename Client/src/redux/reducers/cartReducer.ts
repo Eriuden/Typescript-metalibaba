@@ -1,4 +1,4 @@
-import { MODIFY_CART, CLEAN_CART } from "../Actions/Cart.action";
+import { MODIFY_CART, CLEAN_CART } from "../actions/cart.actions";
 
 let localCart = JSON.parse(window.localStorage.getItem("metalibaba"))
 
@@ -13,7 +13,7 @@ const initialState = {
     totalPrice: totalPrice
 }
 
-const calculateTotalPrice = (cart) => {
+const calculateTotalPrice = (cart:any) => {
     let priceTotal = 0
 
     for (let i = 0; i < cart.length; i++) {
@@ -24,7 +24,7 @@ const calculateTotalPrice = (cart) => {
     return priceTotal
 }
 
-export const cartReducer = (state = initialState, action) => {
+export const cartReducer = (state = initialState, action:any) => {
     switch (action.type) {
         case MODIFY_CART:
             let totalPrice = calculateTotalPrice(action.payload)

@@ -1,16 +1,16 @@
 import {GET_ARTICLE, UPDATE_ARTICLE, UPLOAD_ARTICLE_PICTURE, DELETE_ARTICLE,
     LIKE_ARTICLE, UNLIKE_ARTICLE, DISLIKE_ARTICLE, UNDISLIKE_ARTICLE,
    EDIT_COMMENT, DELETE_COMMENT} 
-   from "../Actions/Article.action";
+   from "../actions/article.actions";
    
    const initialState = {}
    
-   export const articleReducer = (state = initialState, action ) => {
+   export const articleReducer = (state = initialState, action: any ) => {
        switch(action.type) {
            case GET_ARTICLE:
                return action.payload
            case UPDATE_ARTICLE:
-               return state.map((article) => {
+               return state.map((article:any) => {
                    if (article.id === action.payload.articleId) {
                        return {
                            ...article,
@@ -22,7 +22,7 @@ import {GET_ARTICLE, UPDATE_ARTICLE, UPLOAD_ARTICLE_PICTURE, DELETE_ARTICLE,
                    } else return article
                })
            case UPLOAD_ARTICLE_PICTURE:
-               return state.map((article)=> {
+               return state.map((article:any)=> {
                    if (article.id === action.payload.articleId) {
                        return {
                            picture: action.payload.picture
@@ -30,14 +30,14 @@ import {GET_ARTICLE, UPDATE_ARTICLE, UPLOAD_ARTICLE_PICTURE, DELETE_ARTICLE,
                    } else return article
                })
            case DELETE_ARTICLE:
-               return state.filter((article) => 
+               return state.filter((article:any) => 
                article.id !== action.payload.articleId)
            case EDIT_COMMENT:
-               return state.map((article) => {
+               return state.map((article:any) => {
                    if(article._id === action.payload.articleId) {
                        return {
                            ...article,
-                           comments: article.comments.map((comment) => {
+                           comments: article.comments.map((comment: any) => {
                                if (comment._id === action.payload.commentId) {
                                    return {
                                        ...comment,
@@ -51,17 +51,17 @@ import {GET_ARTICLE, UPDATE_ARTICLE, UPLOAD_ARTICLE_PICTURE, DELETE_ARTICLE,
                    } else return article
                })
            case DELETE_COMMENT:
-               return state.map((article) => {
+               return state.map((article:any) => {
                    if (article._id === action.payload.articleId) {
                        return {
                            ...article,
-                           comments: article.comments.filter((comment) =>
+                           comments: article.comments.filter((comment:any) =>
                            comment._id !== action.payload.commentId)
                        }
                    } else return article
                })
            case LIKE_ARTICLE:
-               return state.map((article) => {
+               return state.map((article:any) => {
                    if (article._id === action.payload.articleId)
                        return {
                            ...article,
@@ -69,7 +69,7 @@ import {GET_ARTICLE, UPDATE_ARTICLE, UPLOAD_ARTICLE_PICTURE, DELETE_ARTICLE,
                        }
                })
            case DISLIKE_ARTICLE:
-               return state.map((article) => {
+               return state.map((article:any) => {
                    if (article._id === action.payload.articleId)
                        return {
                            ...article,
@@ -77,21 +77,21 @@ import {GET_ARTICLE, UPDATE_ARTICLE, UPLOAD_ARTICLE_PICTURE, DELETE_ARTICLE,
                        }
                })
            case UNLIKE_ARTICLE:
-               return state.map((article) => {
+               return state.map((article:any) => {
                    if (article._id === action.payload.articleId)
                        return {
                            ...article,
-                           likers: article.likers.filter((id) =>
+                           likers: article.likers.filter((id:string) =>
                            id !== action.payload.userId)
                        }
                    return article
                })
            case UNDISLIKE_ARTICLE:
-               return state.map((article) => {
+               return state.map((article:any) => {
                    if (article._id === action.payload.articleId)
                        return {
                            ...article,
-                           dislikers: article.dislikers.filter((id) => 
+                           dislikers: article.dislikers.filter((id:string) => 
                            id !== action.payload.userId)
                        }
                    return article

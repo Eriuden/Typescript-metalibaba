@@ -1,8 +1,8 @@
-import { GET_USER, DELETE_USER, UPDATE_USER, UPDATE_PASSWORD } from "../Actions/User.action";
+import { GET_USER, DELETE_USER, UPDATE_USER, UPDATE_PASSWORD } from "../actions/user.actions";
 
 const initialState = {}
 
-export const userReducer = (state = initialState, action) => {
+export const userReducer = (state = initialState, action:any) => {
     switch (action.type) {
         case GET_USER:
             return action.payload
@@ -22,7 +22,7 @@ export const userReducer = (state = initialState, action) => {
             }
             
         case DELETE_USER:
-            return state.filter((user) => user._id !== action.payload.userId)
+            return state.filter((user:any) => user._id !== action.payload.userId)
                 
         default: 
             return state
