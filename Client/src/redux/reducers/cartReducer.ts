@@ -6,13 +6,6 @@ if (localCart === null) {
     localCart = []
 }
 
-let totalPrice = calculateTotalPrice(localCart)
-
-const initialState = {
-    cart: localCart,
-    totalPrice: totalPrice
-}
-
 const calculateTotalPrice = (cart:any) => {
     let priceTotal = 0
 
@@ -22,6 +15,13 @@ const calculateTotalPrice = (cart:any) => {
     }
 
     return priceTotal
+}
+
+let totalPrice = calculateTotalPrice(localCart)
+
+const initialState = {
+    cart: localCart,
+    totalPrice: totalPrice
 }
 
 export const cartReducer = (state = initialState, action:any) => {

@@ -15,10 +15,10 @@ export const addToCart = ({cart, newProduct, quantityAdded} : cartProps) => {
     return (dispatch: any) => {
         let same = cart.findIndex((cartIndexFound: any) => cartIndexFound.id === newProduct.id)
         if (same === -1) {
-            newProduct.quantity = parseInt(quantityAdded)
+            newProduct.quantity = quantityAdded
             cart.push(newProduct)
         } else {
-            cart[same].quantity += parseInt(quantityAdded)
+            cart[same].quantity += quantityAdded
         }
         let localCart = JSON.stringify(cart)
         window.localStorage.setItem("metalibaba", localCart)
