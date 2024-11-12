@@ -1,6 +1,6 @@
 import { GET_USER, DELETE_USER, UPDATE_USER, UPDATE_PASSWORD } from "../actions/user.actions";
 
-const initialState = {}
+const initialState:any = {}
 
 export const userReducer = (state = initialState, action:any) => {
     switch (action.type) {

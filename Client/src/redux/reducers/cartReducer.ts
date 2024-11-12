@@ -6,7 +6,7 @@ if (localCart === null) {
     localCart = []
 }
 
-let totalPrice = calculateTotalPrice (localCart)
+let totalPrice = calculateTotalPrice(localCart)
 
 const initialState = {
     cart: localCart,

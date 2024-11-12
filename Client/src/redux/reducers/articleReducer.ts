@@ -3,7 +3,7 @@ import {GET_ARTICLE, UPDATE_ARTICLE, UPLOAD_ARTICLE_PICTURE, DELETE_ARTICLE,
    EDIT_COMMENT, DELETE_COMMENT} 
    from "../actions/article.actions";
    
-   const initialState = {}
+   const initialState:any = {}
    
    export const articleReducer = (state = initialState, action: any ) => {
        switch(action.type) {
