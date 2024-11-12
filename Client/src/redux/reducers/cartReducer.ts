@@ -1,8 +1,10 @@
 import { MODIFY_CART, CLEAN_CART } from "../actions/cart.actions";
 
-let localCart = JSON.parse(window.localStorage.getItem("metalibaba"))
-
-if (localCart === null) {
+let localCart: any[] = [];
+const storedCart = window.localStorage.getItem("metalibaba");
+if (storedCart) {
+  localCart = JSON.parse(storedCart);
+} else {
     localCart = []
 }
 
