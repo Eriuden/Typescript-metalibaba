@@ -8,7 +8,7 @@ export const Home = () => {
     const [loadCard, setLoadCard] = useState(false)
     const [count, setCount] = useState(0)
     const dispatch = useDispatch
-    const articles = useSelector((state)=> state.allArticleReducer)
+    const articles = useSelector((state:any)=> state.allArticleReducer)
   
   
     const loadMore = () => {
@@ -33,7 +33,7 @@ export const Home = () => {
         <div>
           <ul>
             {!isEmpty(articles[0]) &&
-              articles.map((article) => {
+              articles.map((article:any) => {
                 return <ArticleCard articleProps={article} key={article._id}/>
             })}
           </ul>
