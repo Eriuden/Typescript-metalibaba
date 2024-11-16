@@ -17,8 +17,8 @@ export const Header = () => {
   
   const uid = useContext(UidContext)
 
-  const userData = useSelector((state)=> state.userReducer)
-  const cartData = useSelector((state)=> state.cartReducer)
+  const userData = useSelector((state: any)=> state.userReducer)
+  const cartData = useSelector((state: any)=> state.cartReducer)
 
   const switchConnexion = () => {
     setConnexionModal(!connexionModal) 
