@@ -10,7 +10,7 @@ export const Comments = (commentProps: any) => {
   const [commentText, setCommentText] = useState("")
   const user = useSelector((state: any) => state.userReducer)
   const users = useSelector((state: any)=> state.allUsersReducer)
-  const dispatch = useDispatch
+  const dispatch = useDispatch()
 
   const handleComments = (e:any) => {
       e.preventDefault()
