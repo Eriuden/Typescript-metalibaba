@@ -2,7 +2,7 @@ import axios from "axios"
 import cookie from "js-cookie"
 
 export const Logout = () => {
-  const removeCookie = (key) => {
+  const removeCookie = (key:any) => {
     if (window !== undefined) {
       cookie.remove(key, {expires: 1})
     }
