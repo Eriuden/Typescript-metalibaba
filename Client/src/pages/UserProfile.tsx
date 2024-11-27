@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../redux/actions/user.actions";
-import {UpdatePassword} from './UpdatePassword'
+import UpdatePassword from "./UpdatePassword";
 
 export const UserProfile = () => {
     const [name, setName] = useState("")
