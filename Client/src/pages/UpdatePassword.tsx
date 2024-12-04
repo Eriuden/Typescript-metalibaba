@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { useNavigate, useParams, Link } from "react-router-dom"
-import { ToastContainer, toast } from "react-toastify/dist/components"
+import { ToastContainer, Toast } from "react-toastify/dist/components"
 
 const UpdatePassword = () => {
     const {id , token} = useParams()
@@ -38,11 +38,11 @@ const UpdatePassword = () => {
       e.preventDefault()
   
       if (password === "") {
-        toast.error("Mot de passe exigé", {
+        Toast.error("Mot de passe exigé", {
           position:"top-center"
         })
       } else if (password.length < 8) {
-        toast.error("Mot de passe trop court, 8 caractères minimum", {
+        Toast.error("Mot de passe trop court, 8 caractères minimum", {
           position:"top-center"
         })
       } else {
@@ -61,7 +61,7 @@ const UpdatePassword = () => {
           setPassword("")
           setIsUpdated(true)
         } else {
-          toast.error(" Token expiré !", {
+          Toast.error(" Token expiré !", {
             position:"top-center"
           })
         }

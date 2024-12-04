@@ -30,7 +30,7 @@ export const UserProfile = () => {
           <>
             <input type="text" defaultValue={userData.name} onChange={(e)=> setName
             (e.target.value)}/>
-            <textarea type="text" defaultValue={userData.address} onChange={(e)=>
+            <textarea defaultValue={userData.address} onChange={(e)=>
             setAddress(e.target.value)}/>
   
             <button onClick={handleUpdate}>Valider les modifications</button>
