@@ -8,8 +8,8 @@ export const Connexion = () => {
 
   const handleLogin = (e:any) => {
     e.preventDefault()
-    const emailError = document.querySelector(".email.error")
-    const passwordError = document.querySelector(".password.error")
+    const emailError = document.querySelector(".email.error") as HTMLInputElement
+    const passwordError = document.querySelector(".password.error") as HTMLInputElement
 
     axios({
       method:"post",
@@ -25,7 +25,7 @@ export const Connexion = () => {
           emailError.innerHTML = res.data.errors.email 
           passwordError.innerHTML = res.data.errors.password 
         } else {
-          window.location = "/"
+          window.location.href = "/"
         }
       })
       .catch((err)=> {
