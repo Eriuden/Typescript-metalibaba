@@ -6,7 +6,7 @@ import { Squash as Hamburger } from "hamburger-react";
 import {Logout} from "./Logout"
 import { Connexion } from "./Connexion";
 import { Inscription } from "./Inscription";
-import ReactModal from "react-modal"
+import * as ReactModal from "react-modal"
 
 export const Header = () => {
   const [hamburger, setHamburger] = useState(false)
@@ -33,7 +33,7 @@ export const Header = () => {
   useEffect(()=> {
     if (uid) {
       setUidMessage(`Bienvenue ${userData.name}`)
-      setCartNumber(`${cartData.cart.length}`)
+      setCartNumber(cartData.cart.length)
     }
   },[uid, userData, cartData])
 
