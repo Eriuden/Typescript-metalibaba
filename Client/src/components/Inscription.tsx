@@ -12,19 +12,19 @@ export const Inscription = () => {
   const handleRegister = async(e:any)=> {
     e.preventDefault()
 
-    const terms = document.getElementById("terms")!
+    const terms = document.getElementById("terms") as HTMLInputElement
     
-    const nameError = document.querySelector(".name.error")!
-    const emailError = document.querySelector(".email.error")!
-    const addressError = document.querySelector(".address.error")!
-    const passwordError = document.querySelector(".password.error")!
-    const passwordConfError = document.querySelector(".password-conf.error")!
-    const termsError = document.querySelector(".terms.error")!
+    const nameError = document.querySelector(".name.error") as HTMLInputElement
+    const emailError = document.querySelector(".email.error") as HTMLInputElement
+    const addressError = document.querySelector(".address.error") as HTMLInputElement
+    const passwordError = document.querySelector(".password.error") as HTMLInputElement
+    const passwordConfError = document.querySelector(".password-conf.error") as HTMLInputElement
+    const termsError = document.querySelector(".terms.error") as HTMLInputElement
 
     passwordConfError.innerHTML=""
     termsError.innerHTML=""
 
-    if(password !== passwordConfError || password.length < 8 || !terms.checked) {
+    if(password !== passwordConfError.value || password.length < 8 || !terms.checked) {
       if (password !== passwordControl) {
         passwordConfError.innerHTML ="Les mots de passe ne correspondent pas"
       }
