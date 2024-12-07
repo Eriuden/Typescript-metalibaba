@@ -14,7 +14,7 @@ import { Cart } from './pages/Cart'
 import './App.css'
 
 function App() {
-  const [uid, setUid] = useState(null)
+  const [uid, setUid] = useState("")
   const dispatch = useDispatch()
 
   useEffect(()=> {
@@ -31,7 +31,8 @@ function App() {
       .catch(() => console.log("Pas de tokens"))
     }
     fetchToken()
-    if (uid) dispatch(getUser(uid))
+    if (uid)
+     dispatch(getUser(uid))
   }, [uid])
   
 

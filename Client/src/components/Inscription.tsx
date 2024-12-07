@@ -12,14 +12,14 @@ export const Inscription = () => {
   const handleRegister = async(e:any)=> {
     e.preventDefault()
 
-    const terms = document.getElementById("terms")
+    const terms = document.getElementById("terms")!
     
-    const nameError = document.querySelector(".name.error")
-    const emailError = document.querySelector(".email.error")
-    const addressError = document.querySelector(".address.error")
-    const passwordError = document.querySelector(".password.error")
-    const passwordConfError = document.querySelector(".password-conf.error")
-    const termsError = document.querySelector(".terms.error")
+    const nameError = document.querySelector(".name.error")!
+    const emailError = document.querySelector(".email.error")!
+    const addressError = document.querySelector(".address.error")!
+    const passwordError = document.querySelector(".password.error")!
+    const passwordConfError = document.querySelector(".password-conf.error")!
+    const termsError = document.querySelector(".terms.error")!
 
     passwordConfError.innerHTML=""
     termsError.innerHTML=""

@@ -1,5 +1,5 @@
 import axios from "axios"
-import cookie from "js-cookie"
+import * as cookie from "js-cookie"
 
 export const Logout = () => {
   const removeCookie = (key:any) => {
@@ -17,7 +17,7 @@ export const Logout = () => {
     .then(()=> removeCookie("jwt"))
     .catch((err)=> window.alert(err))
 
-    window.location="/"
+    window.location.href="/"
   }
 
   return (
