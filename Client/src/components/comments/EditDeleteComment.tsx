@@ -3,6 +3,7 @@ import {deleteCommentArticle, editCommentArticle} from "../../redux/actions/arti
 import {useDispatch} from "react-redux"
 import { UidContext } from "../AppContext";
 
+
 type props {
   _id: string,
   articleId: string,
@@ -11,11 +12,14 @@ type props {
 }
 
 export const EditDeleteComment = (props: props) => {
+  type appDispatch =() => any
+
   const [isAuthor, setIsAuthor] = useState(false)
   const [edit, setEdit] = useState(false)
   const [commentText, setCommentText] = useState(props.text)
   const uid = useContext(UidContext)
-  const dispatch = useDispatch()
+  const useAppDispatch = () => useDispatch<appDispatch>()
+  const dispatch = useAppDispatch()
 
   const handleEdit = (e:any)=> {
     e.preventDefault()

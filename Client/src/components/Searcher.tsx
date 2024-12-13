@@ -5,9 +5,12 @@ import { ArticleCard } from "./ArticleCard"
 import { isEmpty } from "../Utils"
 
 export const Searcher = () => {
+
+    type appDispatch = () => any
     const [search, setSearch] = useState("")
     const articles = useSelector((state: any) => state.allArticleReducer)
-    const dispatch = useDispatch()
+    const useAppDispatch = () => useDispatch<appDispatch>()
+    const dispatch = useAppDispatch()
 
     useEffect(()=> {
         dispatch(getAllArticles)

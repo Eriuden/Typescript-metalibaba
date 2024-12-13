@@ -187,7 +187,7 @@ export const undislikeArticle = (articleId: string, userId: string) => {
 
 export const addCommentArticle = ({articleId, commenterId, text, commenterName}
     : commentProps) => {
-    return (dispatch: any) => {
+    return async (dispatch: any) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/article/comment-article/${articleId}`,
@@ -201,7 +201,7 @@ export const addCommentArticle = ({articleId, commenterId, text, commenterName}
 }
 
 export const editCommentArticle = ({articleId, commentId, text} : commentProps) => {
-    return (dispatch: any) => {
+    return async (dispatch: any) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/article/edit-comment-article/${articleId}`,

@@ -7,10 +7,14 @@ import {isEmpty} from "../../Utils"
 
 
 export const Comments = (commentProps: any) => {
+
+  type appDispatch = () => any
+
   const [commentText, setCommentText] = useState("")
   const user = useSelector((state: any) => state.userReducer)
   const users = useSelector((state: any)=> state.allUsersReducer)
-  const dispatch = useDispatch()
+  const useAppDispatch = () => useDispatch<appDispatch>()
+  const dispatch = useAppDispatch()
 
   const handleComments = (e:any) => {
       e.preventDefault()

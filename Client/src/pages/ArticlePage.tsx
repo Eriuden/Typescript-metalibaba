@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Comments } from "../components/comments/Comments";
 
 export const ArticlePage = () => {
+    type appDispatch = () => any
     const article = useSelector((state: any) => state.articleReducer)
-    const dispatch = useDispatch()
+    const useAppDispatch = () => useDispatch<appDispatch>()
+    const dispatch = useAppDispatch()
   
     useEffect(()=> {
       dispatch(getArticle(article._id))
@@ -26,4 +28,4 @@ export const ArticlePage = () => {
     )
   }
   
-}
+
