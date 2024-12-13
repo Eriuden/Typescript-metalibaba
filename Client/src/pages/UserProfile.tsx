@@ -4,12 +4,15 @@ import { updateUser } from "../redux/actions/user.actions";
 import UpdatePassword from "./UpdatePassword";
 
 export const UserProfile = () => {
+    type appDispatch = () => any
+
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
     const [updateForm, setUpdateForm] = useState(false)
   
     const userData = useSelector((state: any) => state.userReducer)
-    const dispatch = useDispatch()
+    const useAppDispatch = () => useDispatch<appDispatch>()
+    const dispatch = useAppDispatch()
   
     const handleUpdate = () => {
       dispatch(updateUser(userData._id, name, address))

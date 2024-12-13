@@ -14,8 +14,11 @@ import { Cart } from './pages/Cart'
 import './App.css'
 
 function App() {
+  type appDispatch = () => any
+  
   const [uid, setUid] = useState("")
-  const dispatch = useDispatch()
+  const useAppDispatch = () => useDispatch<appDispatch>()
+  const dispatch = useAppDispatch()
 
   useEffect(()=> {
     const fetchToken = async () => {
