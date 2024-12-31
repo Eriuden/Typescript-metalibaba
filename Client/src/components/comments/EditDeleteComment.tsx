@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux"
 import { UidContext } from "../AppContext";
 
 
-type props {
+type props = {
   _id: string,
   articleId: string,
   commenterId: string,
