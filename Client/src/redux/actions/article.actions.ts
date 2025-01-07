@@ -24,6 +24,8 @@ type articlesProps = {
     typeArticle: string,
     groupe: string,
     price: string
+    likers:[string],
+    dislikers:[string],
 }
 
 type commentProps = {
