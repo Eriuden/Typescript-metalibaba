@@ -20,6 +20,11 @@ export const ArticlePage = () => {
         <h3>{article.typeArticle}</h3>
         <h3>{article.groupe}</h3>
         <h3>{article.price}</h3>
+
+        <div>
+          <span>{article.likers}</span>
+          <span>{article.dislikers}</span>
+        </div>
   
         <div>
           <Comments commentProps={article}/>

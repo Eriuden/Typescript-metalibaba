@@ -9,6 +9,12 @@ export const ArticleCard = (articleProps: any) => {
           <h3>{articleProps.typeArticle}</h3>
           <h3>{articleProps.groupe}</h3>
           <h3>{articleProps.price}</h3>
+
+          <div>
+            <span>{articleProps.likers}</span>
+            <span>{articleProps.dislikers}</span>
+          </div>
+          
         </>
       ) : ""
       }  
