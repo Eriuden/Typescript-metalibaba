@@ -120,8 +120,7 @@ export const deleteArticle = ({
         })
 }
 
-export const likeArticle = (articleId: string, userId: string) => {
-    return (dispatch: any) => {
+export const likeArticle = (articleId: string, userId: string, dispatch:any) => {
         return axios({
             method: "patch",
             url: `${process.env.REACT_APP_API_URL}api/article/like-article`+ articleId,
@@ -131,11 +130,9 @@ export const likeArticle = (articleId: string, userId: string) => {
             dispatch({type: LIKE_ARTICLE, payload: {articleId, userId}})
         })
         .catch((err)=> window.alert(err))
-    }
 }
 
-export const unlikeArticle = (articleId: string, userId: string) => {
-    return (dispatch: any) => {
+export const unlikeArticle = (articleId: string, userId: string, dispatch:any) => {
         return axios({
             method: "patch",
             url: `${process.env.REACT_APP_API_URL}api/article/unlike-article`+ articleId,
@@ -145,11 +142,9 @@ export const unlikeArticle = (articleId: string, userId: string) => {
             dispatch({type: UNLIKE_ARTICLE, payload: {articleId, userId}})
         })
         .catch((err)=> window.alert(err))
-    }
 }
 
-export const dislikeArticle = (articleId: string, userId: string) => {
-    return (dispatch: any) => {
+export const dislikeArticle = (articleId: string, userId: string, dispatch:any) => {
         return axios({
             method: "patch",
             url: `${process.env.REACT_APP_API_URL}api/article/dislike-article`+ articleId,
@@ -159,11 +154,9 @@ export const dislikeArticle = (articleId: string, userId: string) => {
             dispatch({type: DISLIKE_ARTICLE, payload: {articleId, userId}})
         })
         .catch((err)=> window.alert(err))
-    }
 }
 
-export const undislikeArticle = (articleId: string, userId: string) => {
-    return (dispatch: any) => {
+export const undislikeArticle = (articleId: string, userId: string, dispatch:any) => {
         return axios({
             method: "patch",
             url: `${process.env.REACT_APP_API_URL}api/article/undislike-article`+ articleId,
@@ -173,12 +166,10 @@ export const undislikeArticle = (articleId: string, userId: string) => {
             dispatch({type: UNDISLIKE_ARTICLE, payload: {articleId, userId}})
         })
         .catch((err)=> window.alert(err))
-    }
 }
 
 export const addCommentArticle = ({articleId, commenterId, text, commenterName}
-    : commentProps) => {
-    return async (dispatch: any) => {
+    : commentProps, dispatch:any) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/article/comment-article/${articleId}`,
@@ -188,11 +179,9 @@ export const addCommentArticle = ({articleId, commenterId, text, commenterName}
             dispatch({ type: ADD_COMMENT, payload: {articleId}})
         })
         .catch((err)=> window.alert(err))
-    }
 }
 
-export const editCommentArticle = ({articleId, commentId, text} : commentProps) => {
-    return async (dispatch: any) => {
+export const editCommentArticle = ({articleId, commentId, text} : commentProps, dispatch:any) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/article/edit-comment-article/${articleId}`,
@@ -202,11 +191,9 @@ export const editCommentArticle = ({articleId, commentId, text} : commentProps) 
             dispatch({ type: EDIT_COMMENT, payload: {articleId, commentId, text}})
         })
         .catch((err)=> window.alert(err))
-    }
 }
 
-export const deleteCommentArticle = ({articleId, commentId} : commentProps) => {
-    return (dispatch: any) => {
+export const deleteCommentArticle = ({articleId, commentId} : commentProps, dispatch:any) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/article/delete-comment-article/${articleId}`,
@@ -216,7 +203,6 @@ export const deleteCommentArticle = ({articleId, commentId} : commentProps) => {
             dispatch({ type: DELETE_COMMENT, payload: {articleId, commentId}})
         })
         .catch((err)=> window.alert(err))
-    }
 }
 
 
