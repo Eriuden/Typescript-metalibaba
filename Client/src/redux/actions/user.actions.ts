@@ -15,15 +15,13 @@ type userProps ={
     password: string
 }
 
-export const getUser = (uid: string) => {
-    return (dispatch: any) => {
+export const getUser = (uid: string, dispatch:any) => {
         return axios 
             .get(`${process.env.REACT_APP_API_URL}api/user/${uid}`)
             .then((res) => {
                 dispatch({type: GET_USER, payload: res.data})
             })
             .catch((err) => window.alert(err))
-    }
 }
 
 export const updateUser = ({userId, name, adress, email} : userProps, dispatch: any) => {   
@@ -37,8 +35,7 @@ export const updateUser = ({userId, name, adress, email} : userProps, dispatch: 
         })
 }
 
-export const uploadPicture = (data: any, id: string) => {
-    return (dispatch: any) => {
+export const uploadPicture = (data: any, id: string, dispatch:any) => {
         return axios 
             .post(`${process.env.REACT_APP_API_URL}api/user/upload-userPic`, data)
             .then((res)=> {
@@ -54,11 +51,9 @@ export const uploadPicture = (data: any, id: string) => {
                 }
             })
             .catch((err) => console.log(err))
-    }
 }
 
-export const updatePassword = (userId: string, password: string) => {
-    return (dispatch: any) => {
+export const updatePassword = (userId: string, password: string, dispatch:any) => {
         return axios({
             method:"put",
             url: `${process.env.REACT_APP_API_URL}api/user` + userId,
@@ -68,11 +63,9 @@ export const updatePassword = (userId: string, password: string) => {
             dispatch({type: UPDATE_PASSWORD, payload: password})
         })
         .catch((err)=> window.alert(err))
-    }
 }
 
-export const deleteUser = ({userId, name, email, adress, password} : userProps) => {
-    return (dispatch: any) => {
+export const deleteUser = ({userId, name, email, adress, password} : userProps, dispatch:any) => {
         return axios({
             method:"delete",
             url: `${process.env.REACT_APP_API_URL}api/user/${userId}`,
@@ -81,5 +74,4 @@ export const deleteUser = ({userId, name, email, adress, password} : userProps) 
         .then(()=> {
             dispatch({type: DELETE_USER, payload: {userId}})
         })
-    }
 }
