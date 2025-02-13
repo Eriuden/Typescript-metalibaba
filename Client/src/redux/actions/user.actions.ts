@@ -26,8 +26,7 @@ export const getUser = (uid: string) => {
     }
 }
 
-export const updateUser = ({userId, name, adress, email} : userProps) => {
-    return (dispatch: any) => {
+export const updateUser = ({userId, name, adress, email} : userProps, dispatch: any) => {   
         return axios({
             method:"put",
             url:`${process.env.REACT_APP_API_URL}api/user` + userId,
@@ -36,7 +35,6 @@ export const updateUser = ({userId, name, adress, email} : userProps) => {
         .then(()=> {
             dispatch({type: UPDATE_USER, payload: name, adress, email})
         })
-    }
 }
 
 export const uploadPicture = (data: any, id: string) => {

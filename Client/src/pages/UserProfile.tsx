@@ -3,19 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../redux/actions/user.actions";
 import UpdatePassword from "./UpdatePassword";
 
-export const UserProfile = () => {
-    type appDispatch = () => any
+export const UserProfile = (userProps:any) => {
 
-    const [name, setName] = useState("")
-    const [address, setAddress] = useState("")
+    const userData = useSelector((state: any) => state.userReducer)
+    const dispatch = useDispatch
+
+    const [name, setName] = useState(userData.name)
+    const [address, setAddress] = useState(userData.adress)
     const [updateForm, setUpdateForm] = useState(false)
   
-    const userData = useSelector((state: any) => state.userReducer)
-    const useAppDispatch = () => useDispatch<appDispatch>()
-    const dispatch = useAppDispatch()
-  
     const handleUpdate = () => {
-      dispatch(updateUser(userData._id, name, address))
+      updateUser(userProps, dispatch)
       setUpdateForm(false)
     }
     return (
@@ -31,9 +29,9 @@ export const UserProfile = () => {
   
         {updateForm && (
           <>
-            <input type="text" defaultValue={userData.name} onChange={(e)=> setName
+            <input type="text" defaultValue={name} onChange={(e)=> setName
             (e.target.value)}/>
-            <textarea defaultValue={userData.address} onChange={(e)=>
+            <textarea defaultValue={address} onChange={(e)=>
             setAddress(e.target.value)}/>
   
             <button onClick={handleUpdate}>Valider les modifications</button>
