@@ -7,13 +7,13 @@ import {isEmpty} from "../Utils"
 export const Home = () => {
     const [loadCard, setLoadCard] = useState(false)
     const [count, setCount] = useState(0)
-    const dispatch = useDispatch
+    const dispatch = useDispatch()
     const articles = useSelector((state:any)=> state.allArticleReducer)
   
   
     const loadMore = () => {
       if (window.innerHeight + document.documentElement.scrollTop + 1 >
-        document.scrollingElement.scrollHeight)
+        document.scrollingElement!.scrollHeight)
         {
           setLoadCard(true)
         }
@@ -21,7 +21,7 @@ export const Home = () => {
   
     useEffect(()=> {
       if (loadCard) {
-        dispatch(getAllArticles(count))
+        getAllArticles(count,dispatch)
         setLoadCard(false)
         setCount(count + 10)
       }

@@ -36,30 +36,26 @@ type commentProps = {
     text: string
 }
 
-export const getAllArticles = () => {
-    return (dispatch: any) => {
+export const getAllArticles = (num:number, dispatch:any) => {
         return axios 
             .get(`${process.env.REACT_APP_API_URL}api/article`)
             .then((res)=> {
+                dispatch ({type: GET_ARTICLE, payload: num})
                 dispatch({type:GET_ALL_ARTICLES, payload: res.data})
             })
             .catch((err) => window.alert(err))
-    }
 }
 
-export const getArticle = () => {
-    return (dispatch: any) => {
+export const getArticle = (dispatch:any) => {
         return axios
             .get(`${process.env.REACT_APP_API_URL}api/article/:id`)
             .then((res)=> {
                 dispatch({type:GET_ARTICLE, payload:res.data})
             })
             .catch((err)=> window.alert(err))
-    }
 }
 
-export const addArticle = (data: any) => {
-    return (dispatch: any) => {
+export const addArticle = (data: any, dispatch:any) => {
         return axios 
             .post(`${process.env.REACT_APP_API_URL}api/article`, data)
             .then((res)=> {
@@ -69,7 +65,6 @@ export const addArticle = (data: any) => {
                     dispatch ({type: GET_ARTICLE_ERROR, payload:""})
                 }
             })
-    }
 }
 
 export const updateArticle = ({
@@ -78,9 +73,8 @@ export const updateArticle = ({
     typeArticle,
     groupe,
     price
-} : articlesProps
+} : articlesProps , dispatch:any
 ) => {
-    return (dispatch: any) => {
         return axios({
             method:"put",
             url:`${process.env.REACT_APP_API_URL}api/article/${articleId}`,
@@ -93,11 +87,9 @@ export const updateArticle = ({
             })
         })
         .catch((err)=> window.alert(err))
-    }
 }
 
-export const uploadPicture = (data: any, articleId: string) => {
-    return (dispatch: any) => {
+export const uploadPicture = (data: any, articleId: string , dispatch:any) => {
         return axios 
             .post(`${process.env.REACT_APP_API_URL}api/article/upload-articlePic`, data)
             .then((res)=> {
@@ -113,13 +105,11 @@ export const uploadPicture = (data: any, articleId: string) => {
                 }
             })
             .catch((err) => console.log(err))
-    }
 }
 
 export const deleteArticle = ({
     articleId, picture, name, typeArticle, groupe, price
-} : articlesProps) => {
-    return (dispatch: any) => {
+} : articlesProps, dispatch:any) => {
         return axios ({
             method:"delete",
             url:`${process.env.REACT_APP_API_URL}api/article/${articleId}`,
@@ -128,7 +118,6 @@ export const deleteArticle = ({
         .then(()=> {
             dispatch({type: DELETE_ARTICLE, payload: {articleId}})
         })
-    }
 }
 
 export const likeArticle = (articleId: string, userId: string) => {
