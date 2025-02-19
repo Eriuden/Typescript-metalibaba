@@ -46,11 +46,11 @@ export const getAllArticles = (num:number, dispatch:any) => {
             .catch((err) => window.alert(err))
 }
 
-export const getArticle = (dispatch:any) => {
+export const getArticle = (articleId: string, dispatch:any) => {
         return axios
             .get(`${process.env.REACT_APP_API_URL}api/article/:id`)
-            .then((res)=> {
-                dispatch({type:GET_ARTICLE, payload:res.data})
+            .then(()=> {
+                dispatch({type:GET_ARTICLE, payload:articleId})
             })
             .catch((err)=> window.alert(err))
 }
@@ -168,12 +168,12 @@ export const undislikeArticle = (articleId: string, userId: string, dispatch:any
         .catch((err)=> window.alert(err))
 }
 
-export const addCommentArticle = ({articleId, commenterId, text, commenterName}
-    : commentProps, dispatch:any) => {
+export const addCommentArticle = (articleId: string, commentId: string, commenterId: string, text: string, commenterName: string
+    ,dispatch:any) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/article/comment-article/${articleId}`,
-            data: {commenterId, text, commenterName}
+            data: {commentId, commenterId, text, commenterName}
         })
         .then(()=> {
             dispatch({ type: ADD_COMMENT, payload: {articleId}})

@@ -12,6 +12,7 @@ export const Comments = (commentProps: any) => {
 
   const [commentText, setCommentText] = useState("")
   const user = useSelector((state: any) => state.userReducer)
+  const article = useSelector((state:any) => state.articleReducer)
   const users = useSelector((state: any)=> state.allUsersReducer)
   const useAppDispatch = () => useDispatch<appDispatch>()
   const dispatch = useAppDispatch()
@@ -20,8 +21,8 @@ export const Comments = (commentProps: any) => {
       e.preventDefault()
 
       if (commentText) {
-          dispatch(addCommentArticle(commentProps._id, user._id, commentText, user.name))
-              .then(()=> dispatch(getArticle()))
+          addCommentArticle(article._id, commentProps._id, user._id, commentText, user.name, dispatch)
+              .then(()=> getArticle(article._Id, dispatch))
               .then(()=> setCommentText(""))
       }
   }

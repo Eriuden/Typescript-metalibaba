@@ -10,7 +10,7 @@ export const ArticlePage = () => {
     const dispatch = useAppDispatch()
   
     useEffect(()=> {
-      dispatch(getArticle(article._id))
+      getArticle(article._id, dispatch)
     })
   
     return (
