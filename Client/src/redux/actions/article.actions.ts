@@ -28,14 +28,6 @@ type articlesProps = {
     dislikers:[string],
 }
 
-type commentProps = {
-    articleId: string,
-    commentId: string,
-    commenterId: string,
-    commenterName: string,
-    text: string
-}
-
 export const getAllArticles = (num:number, dispatch:any) => {
         return axios 
             .get(`${process.env.REACT_APP_API_URL}api/article`)
@@ -181,7 +173,7 @@ export const addCommentArticle = (articleId: string, commentId: string, commente
         .catch((err)=> window.alert(err))
 }
 
-export const editCommentArticle = ({articleId, commentId, text} : commentProps, dispatch:any) => {
+export const editCommentArticle = (articleId: string, commentId: string, text: string, dispatch:any) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/article/edit-comment-article/${articleId}`,
@@ -193,7 +185,7 @@ export const editCommentArticle = ({articleId, commentId, text} : commentProps, 
         .catch((err)=> window.alert(err))
 }
 
-export const deleteCommentArticle = ({articleId, commentId} : commentProps, dispatch:any) => {
+export const deleteCommentArticle = (articleId:string, commentId:string, dispatch:any) => {
         return axios({
             method:"patch",
             url: `${process.env.REACT_APP_API_URL}api/article/delete-comment-article/${articleId}`,
