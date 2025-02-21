@@ -13,7 +13,7 @@ export const Searcher = () => {
     const dispatch = useAppDispatch()
 
     useEffect(()=> {
-        dispatch(getAllArticles)
+        getAllArticles(articles, dispatch)
     }, [search])
 
     const handleSearchChange = (e: any) => {
