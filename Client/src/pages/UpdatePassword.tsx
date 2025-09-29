@@ -21,7 +21,7 @@ const UpdatePassword = () => {
         }
       })
   
-      const data = await res.json()
+      const data = await res.data()
   
       if (data.status == 201) {
         console.log("utilisateur valide")
@@ -52,10 +52,10 @@ const UpdatePassword = () => {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({password})
+          data: JSON.stringify({password})
         })
   
-        const data = await res.json()
+        const data = await res.data()
   
         if (data.status === 201) {
           setPassword("")
