@@ -46,8 +46,11 @@ return (
                       <h3>{comment.commenterName}</h3>
                   </div>
                   <p>{comment.text}</p>
-                  <EditDeleteComment props={comment} 
-                  articleId = {commentProps._id}/>
+                  <EditDeleteComment _id={comment._id}
+                    articleId={comment.articleId}
+                    commenterId={comment.commenterId}
+                    text={comment.text}
+                  />
               </div>
           )
       })}
