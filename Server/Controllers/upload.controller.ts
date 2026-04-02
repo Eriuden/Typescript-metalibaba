@@ -8,7 +8,6 @@ import { uploadErrors } from "../utils/error.utils";
 
 const pipeline = promisify(stream.pipeline);
 
-// Typage fichier upload
 interface MulterFile {
   detectedMimeType?: string;
   size: number;
@@ -19,7 +18,6 @@ interface CustomRequest extends Request {
   file?: MulterFile;
 }
 
-// Validation centralisée
 const validateFile = (file?: MulterFile) => {
   if (!file) throw new Error("Fichier manquant");
 
@@ -36,7 +34,6 @@ const validateFile = (file?: MulterFile) => {
   }
 };
 
-// UPLOAD PROFIL
 export const uploadProfil = async (
   req: CustomRequest,
   res: Response
@@ -52,7 +49,7 @@ export const uploadProfil = async (
 
   try {
     await pipeline(
-      req.file!.stream, // ⚠️ correction importante
+      req.file!.stream,
       fs.createWriteStream(
         `${__dirname}/../client/public/uploads/userImages/${fileName}`
       )
@@ -62,7 +59,7 @@ export const uploadProfil = async (
       req.body.userId,
       {
         $set: {
-          picture: `./uploads/userImages/${fileName}`, // correction chemin
+          picture: `./uploads/userImages/${fileName}`,
         },
       },
       { new: true }
@@ -74,7 +71,6 @@ export const uploadProfil = async (
   }
 };
 
-// UPLOAD IMAGE ARTICLE
 export const uploadArticlePic = async (
   req: CustomRequest,
   res: Response
